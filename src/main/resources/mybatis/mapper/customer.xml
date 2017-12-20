@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.teng.mapper.CustomerMapper" >
+        <resultMap id="Customer" type="com.teng.entity.Customer" >
+                <id column="cus_id" property="CustomerId" jdbcType="VARCHAR" />
+                <result column="login_name" property="LoginName" jdbcType="VARCHAR" />
+                <result column="mobile" property="Mobile" jdbcType="VARCHAR" />
+                <result column="email" property="Email" jdbcType="VARCHAR"/>
+                <result column="login_pwd" property="LoginPwd" jdbcType="VARCHAR" />
+                <result column="reg_time" property="RegTime" jdbcType="VARCHAR" />
+                <result column="status" property="Status" jdbcType="VARCHAR" />
+                <result column="last_logintime" property="LastLoginTime" jdbcType="VARCHAR" />
+        </resultMap>
+
+        <sql id="Customer_Column_List" >
+                cus_id, login_name, mobile, email, login_pwd, reg_time, status, last_logintime
+        </sql>
+
+        <select id="getCustomerByLoginName" parameterType="java.lang.String" resultMap="Customer" >
+                SELECT
+                        <include refid="Customer_Column_List" />
+                FROM
+                        CUSTOMERS
+                WHERE
+                        LOGIN_NAME = #{loginName}
+        </select>
+
+        <select id="getCustomerMobile" parameterType="java.lang.String" resultMap="Customer" >
+                SELECT
+                        <include refid="Customer_Column_List"/>
+                FROM
+                        CUSTOMERS
+                WHERE
+                        mobile = #{mobile}
+        </select>
+
+        <select id="getCustomerEmail" parameterType="java.lang.String" resultMap="Customer" >
+                SELECT
+                        <include refid="Customer_Column_List" />
+                FROM
+                        CUSTOMERS
+                WHERE
+                        email = #{email}
+        </select>
+
+        <insert id="registerCustomer" parameterType="com.teng.entity.Customer" >
+                INSERT INTO
+                        CUSTOMERS
+                        (<include refid="Customer_Column_List" />)
+                VALUES
+                        (#{CustomerId}, #{LoginName}, #{Mobile}, #{Email}, #{LoginPwd}, #{RegTime}, #{Status}, #{LastLoginTime})
+        </insert>
+
+        <update id="updateLastLoginTime" parameterType="java.lang.String" >
+                UPDATE
+                        customers
+                SET
+                        last_logintime = #{LastLoginTime},
+                        status = '01'
+                WHERE
+                        login_name = #{LoginName}
+        </update>
+
+        <update id="lockCustomer" parameterType="java.lang.String" >
+                UPDATE
+                customers
+                SET
+                status = '05'
+                WHERE
+                cus_id = #{loginName}
+        </update>
+
+        <update id="loginOut" parameterType="com.teng.entity.Customer" >
+                UPDATE
+                        customers
+                SET
+                        status = '00'
+                WHERE
+                        cus_id = #{CustomerId}
+        </update>
+
+</mapper>

@@ -2,116 +2,115 @@ package com.teng.entity;
 
 import com.alibaba.fastjson.JSON;
 import com.teng.Utils.DateTime;
-import com.teng.Utils.StringUtils;
+import com.teng.Utils.Strings;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 public class Customer {
         /**
          * 用户ID
          */
-        private String CustomerId = StringUtils.Empty;
+        private String customerId = Strings.Empty;
         /**
          * 登录名
          */
         @Length(min = 4, max = 20, message = "登录名长度在4~20个字符")
-        private String LoginName = StringUtils.Empty;
+        private String loginName = Strings.Empty;
         /**
          * 手机号码
          */
         @Pattern(regexp = "^1[3|4|5|8][0-9]\\d{4,8}$", message = "手机号码不正确")
-        private String Mobile = StringUtils.Empty;
+        private String mobile = Strings.Empty;
         /**
          * email地址
          */
         @Pattern(regexp = "[\\w!#$%&'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?", message = "邮箱不正确")
-        private String Email = StringUtils.Empty;
+        private String email = Strings.Empty;
         /**
          * 登录密码
          */
         @NotEmpty
-        private String LoginPwd = StringUtils.Empty;
+        private String loginPwd = Strings.Empty;
         /**
          * 注册时间 yyyy-MM-dd HH:mm:ss.SSS
          */
         //@NotEmpty
-        private String RegTime = StringUtils.Empty;
+        private String regTime = Strings.Empty;
         /**
          * 用户状态标识
          */
         //@Pattern(regexp = "/d{2}", message = "状态为两位数字")
-        private String Status = StringUtils.Empty;
+        private String status = Strings.Empty;
 
         /**
          * 上次登录成功时间
          */
-        private String LastLoginTime = StringUtils.Empty;
+        private String lastLoginTime = Strings.Empty;
 
         public String getCustomerId() {
-                return CustomerId;
+                return customerId;
         }
 
         public void setCustomerId(String customerId) {
-                CustomerId = customerId;
+                this.customerId = customerId;
         }
 
         public String getLoginName() {
-                return LoginName;
+                return loginName;
         }
 
         public void setLoginName(String loginName) {
-                LoginName = loginName;
+                this.loginName = loginName;
         }
 
         public String getMobile() {
-                return Mobile;
+                return mobile;
         }
 
         public void setMobile(String mobile) {
-                Mobile = mobile;
+                this.mobile = mobile;
         }
 
         public String getEmail() {
-                return Email;
+                return email;
         }
 
         public void setEmail(String email) {
-                Email = email;
+                this.email = email;
         }
 
         public String getLoginPwd() {
-                return LoginPwd;
+                return loginPwd;
         }
 
         public void setLoginPwd(String loginPwd) {
-                LoginPwd = loginPwd;
+                this.loginPwd = loginPwd;
         }
 
         public String getRegTime() {
-                return RegTime;
+                return regTime;
         }
 
         public void setRegTime(String regTime) {
-                RegTime = regTime;
+                this.regTime = regTime;
         }
 
         public String getStatus() {
-                return Status;
+                return status;
         }
 
         public void setStatus(String status) {
-                Status = status;
+                this.status = status;
         }
 
         public String getLastLoginTime() {
-                return LastLoginTime;
+                return lastLoginTime;
         }
 
         public void setLastLoginTime(String lastLoginTime) {
-                LastLoginTime = lastLoginTime;
+                this.lastLoginTime = lastLoginTime;
         }
 
         public String toString(){

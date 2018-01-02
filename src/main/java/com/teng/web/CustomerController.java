@@ -3,6 +3,7 @@ package com.teng.web;
 import com.alibaba.fastjson.JSON;
 import com.teng.Utils.CacheUtis;
 import com.teng.Utils.DateTime;
+import com.teng.Utils.RequestUtils;
 import com.teng.Utils.ResponseUtils;
 import com.teng.entity.Customer;
 import com.teng.enums.ResponseCode;
@@ -14,11 +15,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @RestController
 @CrossOrigin
-public class CustomerController {
+public class CustomerController extends BaseController {
 
         private Logger logger = LoggerFactory.getLogger(CustomerController.class);
         @Resource(name = "CustomerService")
@@ -38,10 +40,12 @@ public class CustomerController {
                                 customer.setLastLoginTime(DateTime.getWelcomeLastLoginTime(customer.getLastLoginTime()));
                                 msg = ResponseUtils.success(customer);
                                 CacheUtis.setLoginUsers(customer.getLoginName(), customer);
+                                RequestUtils.setCurrentUser(customer);
                         }
                         else {
                                 msg = ResponseUtils.error(ResponseCode.ERROR_PWD);
                         }
+                        saveLog("CustomerController", "Login");
                 } catch (Exception e){
                         msg = ResponseUtils.error(e);
                         logger.error("登录异常",e);

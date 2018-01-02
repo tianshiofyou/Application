@@ -92,7 +92,6 @@ public class LoginTest {
         public void validateParms(){
 
                 try {
-                        HashSet s = new
                         Customer customer = new Customer();
                         customer.setCustomerId(CustomerUitils.getCustomerId());
                         customer.setStatus(CusStatusEnum.OFFLINE.getCode());

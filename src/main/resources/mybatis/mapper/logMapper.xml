@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.teng.mapper.LogMapper">
+    <resultMap id="Cuslog" type="com.teng.model.CusLog" >
+        <result column="interface_name" property="interfaceName" jdbcType="VARCHAR" />
+        <result column="login_name" property="loginName" jdbcType="VARCHAR" />
+        <result column="ip_address" property="ipAddress" jdbcType="VARCHAR" />
+        <result column="invoke_times" property="invokeTimes" jdbcType="DATE"/>
+        <result column="expend_times" property="expendTimes" jdbcType="VARCHAR"/>
+        <result column="invoke_result" property="invokeResult" jdbcType="VARCHAR" />
+        <result column="request_data" property="requestData" jdbcType="CLOB" />
+        <result column="response_data" property="responseData" jdbcType="CLOB" />
+        <result column="remark" property="remark" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="cusLog_Column_List" >
+        interface_name, login_name, ip_address, invoke_times, expend_times, invoke_result, request_data, response_data, remark
+    </sql>
+
+
+    <insert id="wirteReqestLog" parameterType="com.teng.model.CusLog">
+        INSERT INTO
+          CUS_REQUEST_LOG
+          (<include refid="cusLog_Column_List"></include>)
+        VALUES (
+          #{interfaceName}, #{loginName}, #{ipAddress}, #{invokeTimes}, #{expendTimes}, #{invokeResult}, #{requestData}, #{responseData}, #{remark}
+        )
+    </insert>
+
+    <select id="queryReqestLog" parameterType="com.teng.model.CusLog" resultMap="Cuslog">
+        SELECT
+            <include refid="cusLog_Column_List"></include>
+        FROM
+            CUS_REQUEST_LOG
+        <where>
+            <if test="!@com.teng.Utils.Strings@isNullOrEmpty(interfaceName)">
+                AND INTERFACE_NAME = #{interfaceName}
+            </if>
+            <if test="!@com.teng.Utils.Strings@isNullOrEmpty(loginName)">
+                AND LOGIN_NAME = #{loginName}
+            </if>
+            <if test="!@com.teng.Utils.Strings@isNullOrEmpty(ipAddress)">
+                AND IP_ADDRESS = #{ipAddress}
+            </if>
+            <if test="invokeTimes != null">
+                AND INVOKE_TIMES = #{invokeTimes}
+            </if>
+            <if test="expendTimes != null">
+                AND EXPEND_TIMES = #{expendTimes}
+            </if>
+            <if test="!@com.teng.Utils.Strings@isNullOrEmpty(invokeResult)">
+                AND INVOKE_RESULT = #{invokeResult}
+            </if>
+            <if test="!@com.teng.Utils.Strings@isNullOrEmpty(requestData)">
+                AND REQUEST_DATA = #{requestData}
+            </if>
+            <if test="!@com.teng.Utils.Strings@isNullOrEmpty(requestData)">
+                AND RESPONSE_DATA = #{requestData}
+            </if>
+            <if test="!@com.teng.Utils.Strings@isNullOrEmpty(remark)">
+                AND REMARK = #{remark}
+            </if>
+        </where>
+    </select>
+</mapper>

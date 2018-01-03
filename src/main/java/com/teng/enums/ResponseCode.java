@@ -19,7 +19,7 @@ public enum  ResponseCode {
         RESETTRADEPWD("1008","需重置交易密码"),
         RESETPWD("1009","需重置登陆密码、交易密码"),
         LOGIN_ERROR_CONTINUOUS("5006", "登录密码连续输入错误"),
-        NOT_LOGINED("5005", "登录超时"), //未登录
+        NOT_LOGINED("5005", "登录超时或未登录"), //未登录
         XSS_INJURE("5005", "脚本注入攻击"); //脚本注入注入攻击
 
         private String retcode;

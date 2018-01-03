@@ -52,6 +52,10 @@ public class RequestUtils {
                 return (Customer) request.getSession().getAttribute("Customer");
         }
 
+        public static Customer getCurrentUserByRequest(HttpServletRequest request){
+                return (Customer) request.getSession().getAttribute("Customer");
+        }
+
         public static void setCurrentUser(Customer customer){
                 HttpServletRequest request = getRequest();
                 request.getSession().setAttribute("Customer", customer);

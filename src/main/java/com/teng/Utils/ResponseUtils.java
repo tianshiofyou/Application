@@ -54,4 +54,11 @@ public class ResponseUtils {
                 rspMsg.setData(map);
                 return rspMsg;
         }
+
+        public static ResponseMsg unlogin(){
+                ResponseMsg responseMsg = new ResponseMsg();
+                responseMsg.setCode(ResponseCode.NOT_LOGINED.getRetcode());
+                responseMsg.setMsg(ResponseCode.NOT_LOGINED.getRetmsg());
+                return responseMsg;
+        }
 }

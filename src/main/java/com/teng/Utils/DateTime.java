@@ -1,7 +1,5 @@
 package com.teng.Utils;
 
-import com.teng.entity.Customer;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;

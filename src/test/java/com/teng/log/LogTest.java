@@ -1,9 +1,8 @@
 package com.teng.log;
 
 import com.alibaba.fastjson.JSON;
-import com.teng.Utils.RequestUtils;
-import com.teng.builder.CusLogBuilder;
-import com.teng.mapper.LogMapper;
+import com.teng.model.builder.CusLogBuilder;
+import com.teng.model.dao.mapper.LogMapper;
 import com.teng.model.CusLog;
 import org.junit.Test;
 import org.junit.runner.RunWith;

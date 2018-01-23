@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.teng.mapper.CustomerMapper" >
-        <resultMap id="Customer" type="com.teng.entity.Customer" >
+<mapper namespace="com.teng.model.dao.mapper.CustomerMapper" >
+        <resultMap id="Customer" type="com.teng.model.entity.Customer" >
                 <id column="cus_id" property="CustomerId" jdbcType="VARCHAR" />
                 <result column="login_name" property="LoginName" jdbcType="VARCHAR" />
                 <result column="mobile" property="Mobile" jdbcType="VARCHAR" />
@@ -43,7 +43,7 @@
                         email = #{email}
         </select>
 
-        <insert id="registerCustomer" parameterType="com.teng.entity.Customer" >
+        <insert id="registerCustomer" parameterType="com.teng.model.entity.Customer" >
                 INSERT INTO
                         CUSTOMERS
                         (<include refid="Customer_Column_List" />)
@@ -70,7 +70,7 @@
                 cus_id = #{loginName}
         </update>
 
-        <update id="loginOut" parameterType="com.teng.entity.Customer" >
+        <update id="loginOut" parameterType="com.teng.model.entity.Customer" >
                 UPDATE
                         customers
                 SET

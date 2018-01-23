@@ -1,13 +1,11 @@
 package com.teng.Utils;
 
-import com.teng.enums.ResponseCode;
-import com.teng.msg.ResponseMsg;
-import org.slf4j.LoggerFactory;
+import com.teng.constants.enums.ResponseCode;
+import com.teng.model.ResponseMsg;
 import org.springframework.validation.BindingResult;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Logger;
 
 public class ResponseUtils {
 

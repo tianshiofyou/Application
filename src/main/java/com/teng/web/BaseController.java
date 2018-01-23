@@ -1,14 +1,11 @@
 package com.teng.web;
 
 import com.teng.Utils.RequestUtils;
-import com.teng.entity.Customer;
+import com.teng.model.entity.Customer;
 import com.teng.event.CusOprateLogEvent;
 import com.teng.model.CusLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-
-import javax.servlet.http.HttpServletRequest;
-import java.time.Instant;
 
 /**
  * Created by admin on 2017/12/27.

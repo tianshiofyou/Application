@@ -2,9 +2,9 @@ package com.teng.login;
 
 import com.teng.Utils.CustomerUitils;
 import com.teng.Utils.DateTime;
-import com.teng.entity.Customer;
-import com.teng.enums.CusStatusEnum;
-import com.teng.mapper.CustomerMapper;
+import com.teng.model.entity.Customer;
+import com.teng.constants.enums.CusStatusEnum;
+import com.teng.model.dao.mapper.CustomerMapper;
 import com.teng.web.CustomerController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,8 +17,6 @@ import org.springframework.util.Assert;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
-import java.util.HashSet;
-import java.util.Set;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

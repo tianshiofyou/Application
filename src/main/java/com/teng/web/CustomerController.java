@@ -5,17 +5,16 @@ import com.teng.Utils.CacheUtis;
 import com.teng.Utils.DateTime;
 import com.teng.Utils.RequestUtils;
 import com.teng.Utils.ResponseUtils;
-import com.teng.entity.Customer;
-import com.teng.enums.ResponseCode;
-import com.teng.msg.ResponseMsg;
-import com.teng.service.CustomerService;
+import com.teng.model.entity.Customer;
+import com.teng.constants.enums.ResponseCode;
+import com.teng.model.ResponseMsg;
+import com.teng.biz.service.CustomerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @RestController

@@ -1,6 +1,6 @@
 package com.teng.Utils;
 
-import com.teng.entity.Customer;
+import com.teng.model.entity.Customer;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
